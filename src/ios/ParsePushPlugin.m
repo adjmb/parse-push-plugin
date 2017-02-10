@@ -188,10 +188,6 @@
 
 -(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler {
     NSLog(@"User info %@", notification.request.content.userInfo);
-
-    UIApplication *application = [UIApplication sharedApplication];
-    [self jsCallback:notification.request.content.userInfo withAction:(application.applicationState == UIApplicationStateActive) ? @"RECEIVE" : @"OPEN"];
-
     completionHandler(UNNotificationPresentationOptionAlert);
 }
 
